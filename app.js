@@ -23,7 +23,7 @@ const generarArchivoAsync = async (base = 5, data) => {
 //Obtenemos la base por consola con validacion.
 const obtenerBasePorConsola = () => {
     let argv = process.argv;
-    if (argv[2]) base = argv[2].split('=')[1];
+    if (argv[2]) return argv[2].split('=')[1];
 };
 
 const base = obtenerBasePorConsola();
