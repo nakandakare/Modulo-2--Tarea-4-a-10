@@ -1,3 +1,5 @@
+//Librerias.
+const colors = require('colors');
 //Requerimos la funcion para generar archivos.
 const generarArchivo = require('./utils/generarArchivo');
 
@@ -32,4 +34,5 @@ const resultados = concatenarMultiplicacion(base);
 generarArchivoAsync(base, resultados);
 
 //monstramos el resultado por consola
+console.log(colors.random(`Tabla de ${base}`));
 console.log(resultados);
