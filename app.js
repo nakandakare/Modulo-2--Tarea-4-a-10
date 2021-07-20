@@ -1,27 +1,6 @@
-//Librerias.
+//Imports.
 const colors = require('colors');
-const argv = require('yargs')
-    .option('b', {
-        alias: 'base',
-        type: 'number',
-        demandOption: true
-    }).option('l', {
-        alias: 'listar',
-        type: 'boolean',
-        default: false,
-    })
-    .check((argv, _option) => {
-        if (isNaN(argv.b)) {
-            throw 'La base tiene que ser un numero';
-        }
-
-        if (argv.b > 20 || argv.b < 1) {
-            throw 'Debes colocar un valor de base entre 1 y 20';
-        }
-
-        return true;
-    }).argv;
-//Requerimos la funcion para generar archivos.
+const argv = require('./Config/yargs');
 const generarArchivo = require('./utils/generarArchivo');
 
 //Creamos una funcion reutilizable con validaciones para imprimir el resultado. 
