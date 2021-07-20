@@ -5,7 +5,7 @@ const generarArchivo = require('./utils/generarArchivo');
 
 //Creamos una funcion reutilizable con validaciones para imprimir el resultado. 
 const concatenarMultiplicacion = (base = 5, cantMax = 10) => {
-    let resultados;
+    let resultados = '';
     for (let i = 1; i <= cantMax; i++) {
         resultados += `${base} x ${i} = ${base * i}\n`
     }
