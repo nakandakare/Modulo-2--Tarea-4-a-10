@@ -7,7 +7,7 @@ const generarArchivo = require('./utils/generarArchivo');
 const concatenarMultiplicacion = (base = 5, cantMax = 10) => {
     let resultados = '';
     for (let i = 1; i <= cantMax; i++) {
-        resultados += `${base} x ${i} = ${base * i}\n`
+        resultados += `${base} ${'x'.yellow} ${i} = ${base * i}\n`
     }
     return resultados;
 };
@@ -30,7 +30,9 @@ const obtenerBasePorConsola = () => {
 //imprimimos el resultado si listar es true.
 const listarResultado = (dato, listar) => {
     if (listar) {
-        console.log(colors.random(`Tabla de ${base}`));
+        console.log('========================='.america);
+        console.log(colors.random(`      Tabla de ${base}`));
+        console.log('========================='.america);
         console.log(dato);
     }
 }
