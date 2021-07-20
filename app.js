@@ -5,11 +5,13 @@ const generarArchivo = require('./utils/generarArchivo');
 
 //Creamos una funcion reutilizable con validaciones para imprimir el resultado. 
 const concatenarMultiplicacion = (base = 5, cantMax = 10) => {
-    let resultados = '';
+    let salida = '';
+    let consola = '';
     for (let i = 1; i <= cantMax; i++) {
-        resultados += `${base} ${'x'.yellow} ${i} = ${base * i}\n`
+        salida += `${base} x ${i} = ${base * i}\n`
+        consola += `${base} ${'x'.yellow} ${i} = ${base * i}\n`
     }
-    return resultados;
+    return { consola, salida };
 };
 
 //Generamos y guardamos el archivo Txt tratando como Promesas.
@@ -40,7 +42,7 @@ const listarResultado = (dato, listar) => {
 const base = obtenerBasePorConsola();
 const resultados = concatenarMultiplicacion(base);
 
-generarArchivoAsync(base, resultados);
+generarArchivoAsync(base, resultados.salida);
 
 //monstramos el resultado por consola condicionalmente con argumento listar de consola.
-listarResultado(resultados, argv.l);
+listarResultado(resultados.consola, argv.l);
