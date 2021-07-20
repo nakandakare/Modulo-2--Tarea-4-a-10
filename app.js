@@ -1,6 +1,26 @@
 //Librerias.
 const colors = require('colors');
-const argv = require('yargs').argv;
+const argv = require('yargs')
+    .option('b', {
+        alias: 'base',
+        type: 'number',
+        demandOption: true
+    }).option('l', {
+        alias: 'listar',
+        type: 'boolean',
+        default: false,
+    })
+    .check((argv, _option) => {
+        if (isNaN(argv.b)) {
+            throw 'La base tiene que ser un numero';
+        }
+
+        if (argv.b > 20 || argv.b < 1) {
+            throw 'Debes colocar un valor de base entre 1 y 20';
+        }
+
+        return true;
+    }).argv;
 //Requerimos la funcion para generar archivos.
 const generarArchivo = require('./utils/generarArchivo');
 
@@ -28,11 +48,18 @@ const obtenerBasePorConsola = () => {
     if (argv.base) return argv.base;
 };
 
+//imprimimos el resultado si listar es true.
+const listarResultado = (dato, listar) => {
+    if (listar) {
+        console.log(colors.random(`Tabla de ${base}`));
+        console.log(dato);
+    }
+}
+
 const base = obtenerBasePorConsola();
 const resultados = concatenarMultiplicacion(base);
 
 generarArchivoAsync(base, resultados);
 
-//monstramos el resultado por consola
-console.log(colors.random(`Tabla de ${base}`));
-console.log(resultados);
+//monstramos el resultado por consola condicionalmente con argumento listar de consola.
+listarResultado(resultados, argv.l);
